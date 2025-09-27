@@ -1,0 +1,76 @@
+perfume-store/
+├── index.html
+├── cart.html
+├── success.html
+├── style.css
+├── js/
+│   └── script.js
+└── data/
+    └── perfumes.json
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfume Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌸 Perfume Store</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <main id="product-list"></main>
+
+  <footer>
+    <p>&copy; 2025 Perfume Store</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Your Cart</h1>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main id="cart-container"></main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Success</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Thank You!</h1>
+  </header>
+  <main>
+    <p>Your order has been placed successfully.</p>
+    <a href="index.html">Back to Home</a>
+  </main>
+</body>
+</html>
+

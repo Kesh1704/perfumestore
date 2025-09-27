@@ -1,0 +1,79 @@
+// Load products on index page
+async function loadProducts() {
+  try {
+    const res = await fetch('data/perfumes.json');
+    const perfumes = await res.json();
+    const container = document.getElementById('product-list');
+    if (!container) return;
+
+    perfumes.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'product';
+      div.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>Price: $${p.price.toFixed(2)}</p>
+        <button onclick="addToCart(${p.id}, '${p.name}', ${p.price})">Add to Cart</button>
+      `;
+      container.appendChild(div);
+    });
+  } catch (err) {
+    console.error("Failed to load products:", err);
+  }
+}
+
+// Add item to cart in localStorage
+function addToCart(id, name, price) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const idx = cart.findIndex(item => item.id === id);
+  if (idx >= 0) {
+    cart[idx].qty += 1;
+  } else {
+    cart.push({ id, name, price, qty: 1 });
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${name} added to cart`);
+}
+
+// Load cart page content
+function loadCartPage() {
+  const container = document.getElementById('cart-container');
+  if (!container) return;
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  container.innerHTML = '';
+
+  if (cart.length === 0) {
+    container.innerHTML = '<p>Your cart is empty.</p>';
+    return;
+  }
+
+  let total = 0;
+  cart.forEach(item => {
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
+    container.innerHTML += `
+      <div>
+        <h3>${item.name}</h3>
+        <p>Quantity: ${item.qty}</p>
+        <p>Price: $${item.price.toFixed(2)}</p>
+        <p>Total: $${itemTotal.toFixed(2)}</p>
+      </div>
+    `;
+  });
+
+  container.innerHTML += `<h2>Total: $${total.toFixed(2)}</h2>`;
+  container.innerHTML += `<button onclick="checkout()">Checkout</button>`;
+}
+
+// Fake checkout: clear cart and go to success page
+function checkout() {
+  localStorage.removeItem('cart');
+  window.location.href = 'success.html';
+}
+
+// When page loads
+window.addEventListener('DOMContentLoaded', () => {
+  loadProducts();
+  loadCartPage();
+});

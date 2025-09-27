@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Chanel No.5",
+    "price": 120.00,
+    "image": "https://via.placeholder.com/200x200?text=Chanel+No.5"
+  },
+  {
+    "id": 2,
+    "name": "Dior Sauvage",
+    "price": 140.00,
+    "image": "https://via.placeholder.com/200x200?text=Dior+Sauvage"
+  },
+  {
+    "id": 3,
+    "name": "Gucci Bloom",
+    "price": 110.00,
+    "image": "https://via.placeholder.com/200x200?text=Gucci+Bloom"
+  },
+  {
+    "id": 4,
+    "name": "Versace Eros",
+    "price": 130.00,
+    "image": "https://via.placeholder.com/200x200?text=Versace+Eros"
+  }
+]
